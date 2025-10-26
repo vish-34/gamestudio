@@ -75,7 +75,7 @@ export default function Games() {
   const renderGame = (game) => (
     <div
       key={game.title}
-      className={`relative min-h-screen flex items-center justify-${game.align} parallax-bg`}
+      className={`relative  lg:min-h-screen flex items-center justify-${game.align} parallax-bg`}
       style={{
         backgroundImage: `${game.gradient}, url('${game.bgImage}')`,
       }}
@@ -119,10 +119,10 @@ export default function Games() {
     <section id="games" className="py-24">
       <FadeUpOnView>
         <div className="container mx-auto px-6 mb-16">
-          <h2 className="font-heading text-5xl md:text-6xl text-white ml-[1.1em] font-bold">
+          <h2 className="font-heading text-center lg:text-left text-5xl md:text-6xl text-white lg:ml-[1.1em] font-bold">
             Our Worlds
           </h2>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto mt-4 ml-[4em]">
+          <p className="text-lg text-center lg:text-left text-gray-300 max-w-2xl mx-auto mt-4 lg:ml-[4em]">
             Each project is a universe we've built from scratch, pushing the boundaries of imagination and technology.
           </p>
         </div>

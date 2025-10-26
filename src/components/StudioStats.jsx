@@ -6,7 +6,7 @@ import FadeUpOnView from '../animations/FadeUpOnView';
 const StatItem = ({ number, description }) => {
   const [count, setCount] = useState(0);
   const ref = useRef();
-  const hasAnimated = useRef(false); // ensures animation runs only once
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -14,8 +14,8 @@ const StatItem = ({ number, description }) => {
         if (entry.isIntersecting && !hasAnimated.current) {
           hasAnimated.current = true;
           let start = 0;
-          const end = parseInt(number.replace(/\D/g, "")); // extract numeric value
-          const duration = 1000; // animation duration in ms
+          const end = parseInt(number.replace(/\D/g, ""));
+          const duration = 1000;
           const stepTime = Math.max(Math.floor(duration / end), 20);
 
           const timer = setInterval(() => {
@@ -25,7 +25,7 @@ const StatItem = ({ number, description }) => {
           }, stepTime);
         }
       },
-      { threshold: 0.3 } // trigger when 30% visible
+      { threshold: 0.3 }
     );
 
     if (ref.current) observer.observe(ref.current);
@@ -36,12 +36,12 @@ const StatItem = ({ number, description }) => {
   return (
     <div
       ref={ref}
-      className="bg-zinc-800/50 backdrop-blur-sm border border-zinc-700 p-8 rounded-xl shadow-lg transform transition-all duration-300 hover:-translate-y-1 hover:shadow-purple-400/10"
+      className="bg-zinc-800/50 backdrop-blur-sm border border-zinc-700 p-6 sm:p-8 rounded-xl shadow-lg transform transition-all duration-300 hover:-translate-y-1 hover:shadow-purple-400/10"
     >
-      <span className="text-6xl lg:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-500 mb-2 block">
+      <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-500 mb-2 block">
         {count}
       </span>
-      <p className="text-gray-300 uppercase tracking-wide text-sm">{description}</p>
+      <p className="text-gray-300 uppercase tracking-wide text-xs sm:text-sm">{description}</p>
     </div>
   );
 };
@@ -49,7 +49,7 @@ const StatItem = ({ number, description }) => {
 // Main Section Component
 export default function StudioStats() {
   return (
-    <section className="py-24 text-white relative overflow-hidden">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24 text-white relative overflow-hidden">
       {/* Background Dots */}
       <div
         className="absolute inset-0 w-full h-full opacity-[0.04] -z-1"
@@ -59,30 +59,35 @@ export default function StudioStats() {
         }}
       ></div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Title */}
         <FadeUpOnView>
-        <div className="mb-16 max-w-2xl">
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-4 ml-16">Studio Stats</h2>
-          <p className="text-lg text-gray-400 ml-[4em]">
-            A quick look at our journey, our team, and our accomplishments in the industry.
-          </p>
-        </div>
+          <div className="mb-8 sm:mb-12 md:mb-16 max-w-2xl mx-auto sm:mx-0">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-4 text-center sm:text-left sm:ml-8 md:ml-12 lg:ml-16">
+              Studio Stats
+            </h2>
+            <p className="text-base sm:text-lg text-gray-400 text-center sm:text-left px-4 sm:px-0 sm:ml-8 md:ml-12 lg:ml-16">
+              A quick look at our journey, our team, and our accomplishments in the industry.
+            </p>
+          </div>
         </FadeUpOnView>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 max-w-7xl ml-[5em] md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto sm:ml-0 md:ml-8 lg:ml-20">
           <StatItem number="30+" description="Shipped Titles" />
           <StatItem number="15+" description="Years Working with AAA Studios" />
 
-          <div className="group backdrop-blur-sm border border-zinc-700 p-8 rounded-xl shadow-lg flex flex-col justify-center items-center text-center transition-all duration-300 hover:bg-blue-300 hover:border-purple-500 cursor-pointer md:col-span-2 lg:col-span-1">
-            <h3 className="text-3xl font-bold text-white mb-3">Join Our Team</h3>
-            <p className="text-gray-300 mb-6 group-hover:text-white">
+          {/* Join Our Team CTA */}
+          <div className="group backdrop-blur-sm border border-zinc-700 p-6 sm:p-8 rounded-xl shadow-lg flex flex-col justify-center items-center text-center transition-all duration-300 hover:bg-blue-300 hover:border-purple-500 cursor-pointer sm:col-span-2 lg:col-span-1 order-last sm:order-none">
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 sm:mb-3">
+              Join Our Team
+            </h3>
+            <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 group-hover:text-white">
               We're looking for passionate creators to build the future of gaming.
             </p>
-            <span className="flex items-center text-lg font-semibold text-blue-400 group-hover:text-white">
+            <span className="flex items-center text-base sm:text-lg font-semibold text-blue-400 group-hover:text-white">
               See Open Roles
-              <ArrowRightIcon className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRightIcon className="w-4 h-4 sm:w-5 sm:h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
             </span>
           </div>
 

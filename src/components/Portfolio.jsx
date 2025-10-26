@@ -49,56 +49,65 @@ const servicesData = [
 
 // Reusable Card Component
 const ServiceCard = ({ number, image, title, items }) => (
-  <div className="flex flex-col">
+  <motion.div 
+    className="flex flex-col"
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.2 }}
+    transition={{ duration: 0.6 }}
+  >
     {/* Image Box */}
-    <div className="relative h-56 rounded-lg flex items-center justify-center mb-6 overflow-hidden">
+    <div className="relative h-48 sm:h-52 md:h-56 rounded-lg flex items-center justify-center mb-4 sm:mb-6 overflow-hidden group">
       {/* Card Image */}
       <img 
         src={image} 
         alt={title} 
-        className="w-full h-full object-cover rounded-lg brightness-75"
+        className="w-full h-full object-cover rounded-lg brightness-75 transition-transform duration-500 group-hover:scale-110"
       />
       
       {/* Number Box */}
-      <div className="absolute top-4 right-4 bg-gray-900 bg-opacity-50 px-3 py-1 rounded">
-        <span className="text-white font-mono text-sm font-bold">{number}</span>
+      <div className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-gray-900 bg-opacity-50 px-2.5 py-1 sm:px-3 sm:py-1 rounded backdrop-blur-sm">
+        <span className="text-white font-mono text-xs sm:text-sm font-bold">{number}</span>
       </div>
     </div>
 
     {/* Text Content */}
     <div>
-      <h3 className="text-xl font-semibold uppercase mb-4 text-white">{title}</h3>
-      <ul className="space-y-3">
+      <h3 className="text-lg sm:text-xl font-semibold uppercase mb-3 sm:mb-4 text-white">
+        {title}
+      </h3>
+      <ul className="space-y-2 sm:space-y-3">
         {items.map((item, index) => (
           <li key={index} className="flex items-start">
-            <ChevronRightIcon className="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-0.5" />
-            <span className="text-gray-300">{item}</span>
+            <ChevronRightIcon className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mr-2 flex-shrink-0 mt-0.5" />
+            <span className="text-sm sm:text-base text-gray-300">{item}</span>
           </li>
         ))}
       </ul>
     </div>
-  </div>
+  </motion.div>
 );
 
 // Main Section Component
 export default function Portfolio() {
   return (
-    <section id='services' className="-mt-14 text-white py-24 relative max-w-7xl ml-[7em] ">
-      <div className="container mx-auto px-6">
+    <section 
+      id='services' 
+      className="text-white lg:-ml-[7em] py-12 sm:py-16 md:py-20 lg:py-24 relative w-full"
+    >
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl lg:ml-auto lg:mr-0 lg:pr-12">
         
         {/* Title */}
         <FadeUpOnView>
-        <div className="relative mb-20 w-max">
-          <h2 className="text-5xl md:text-6xl font-bold uppercase tracking-wider -ml-10 text-white relative z-10">
-            What We Do
-          </h2>
-        </div>
+          <div className="relative mb-10 sm:mb-14 md:mb-16 lg:mb-20 w-full sm:w-max">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-wider text-white relative z-10 text-center sm:text-left sm:-ml-10">
+              What We Do
+            </h2>
+          </div>
         </FadeUpOnView>
 
-        
-
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
           {servicesData.map((service, index) => (
             <ServiceCard 
               key={index}
@@ -111,30 +120,22 @@ export default function Portfolio() {
         </div>
       </div>
 
-      {/* Floating Icon */}
-      {/* <div className="fixed bottom-6 left-6 w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center shadow-lg z-50">
-        <SparklesIcon className="w-7 h-7 text-white" />
-      </div> */}
-
-       {/*  animated divider line */}
+      {/* Animated divider lines - hidden on mobile, visible on large screens */}
       <motion.div
-        className="absolute top-0 left-1/2 w-0.5 h-[8em] mt-[] ml-[30em] bg-white opacity-20 z-0"
+        className="hidden lg:block absolute top-0 left-1/2 w-0.5 h-[8em] ml-[30em] bg-white opacity-20 z-0"
         initial={{ scaleY: 0 }}
         animate={{ scaleY: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
-        style={{ originY: 0 }} // <--- Animate from the top
+        style={{ originY: 0 }}
       />
 
-       {/*  animated divider line horizontal */}
-      
-            <motion.div
-              className="absolute top-1/2 left-0 h-0.5 w-[45em] ml-[25em] -mt-[18em] bg-white opacity-20 z-0"
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              style={{ originX: 0 }} // Animate from the left
-            />
-
+      <motion.div
+        className="hidden lg:block absolute top-1/2 left-0 h-0.5 w-[35em] ml-[42.5em] -mt-[18em] bg-white opacity-20 z-0"
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        style={{ originX: 0 }}
+      />
     </section>
   );
 }

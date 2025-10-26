@@ -27,20 +27,18 @@ export default function Header({ isSticky }) {
 
   const handleLinkClick = (href) => {
     setIsMobileMenuOpen(false);
+    setIsServicesOpen(false);
 
     if (href === "/") {
-      // Always navigate to homepage
       navigate("/");
       return;
     }
 
     if (href.startsWith("#")) {
-      // In-page smooth scroll only on same page
       if (location.pathname === "/") {
         const target = document.querySelector(href);
         if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
       } else {
-        // Navigate to home page and scroll after short delay
         navigate("/", { state: { scrollTo: href } });
       }
     } else {
@@ -50,25 +48,27 @@ export default function Header({ isSticky }) {
 
   const handleDropdownClick = (url) => {
     setIsMobileMenuOpen(false);
+    setIsServicesOpen(false);
     navigate(url);
   };
 
   return (
     <header
-      id="navbar"
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out ${
-        isSticky ? "glassmorphic-sticky" : ""
+      className={`fixed top-0 left-0 w-screen z-50 transition-all duration-300 ease-in-out ${
+        isSticky ? "glassmorphic-sticky" : "bg-black/40 backdrop-blur-md"
       }`}
     >
-      <nav className="container mx-auto max-w-7xl px-6 py-4 flex justify-between items-center">
+      <nav className="container mx-auto max-w-7xl px-4 sm:px-6 md:px-8 py-3 sm:py-4 flex justify-between items-center">
+        {/* Logo */}
         <img
           src="https://gameeon.in/wp-content/uploads/2023/06/gelogo.png"
           alt="Logo"
-          className="w-auto h-10"
+          className="w-auto h-8 sm:h-9 md:h-10 flex-shrink-0 cursor-pointer"
+          onClick={() => navigate("/")}
         />
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden lg:flex items-center space-x-5 xl:space-x-8">
           {navLinks.map((link) =>
             link.dropdown ? (
               <div
@@ -77,7 +77,7 @@ export default function Header({ isSticky }) {
                 onMouseEnter={() => setIsServicesOpen(true)}
                 onMouseLeave={() => setIsServicesOpen(false)}
               >
-                <button className="text-gray-300 hover:text-white flex items-center gap-1 transition-colors duration-200">
+                <button className="text-gray-300 hover:text-white flex items-center gap-1 transition duration-200 text-sm xl:text-base">
                   {link.name}
                   <svg
                     className={`w-4 h-4 transition-transform duration-300 ${
@@ -96,8 +96,9 @@ export default function Header({ isSticky }) {
                   </svg>
                 </button>
 
+                {/* Dropdown */}
                 <div
-                  className={`absolute top-full left-0 mt-3 w-56 bg-gray-900/95 backdrop-blur-lg rounded-xl shadow-2xl border border-gray-700/50 overflow-hidden transition-all duration-300 transform origin-top ${
+                  className={`absolute top-full left-0 mt-3 w-56 bg-gray-900/95 backdrop-blur-lg rounded-xl shadow-2xl border border-gray-700/50 transition-all duration-300 transform origin-top ${
                     isServicesOpen
                       ? "opacity-100 visible translate-y-0 scale-100"
                       : "opacity-0 invisible -translate-y-2 scale-95"
@@ -108,7 +109,7 @@ export default function Header({ isSticky }) {
                       <button
                         key={item.name}
                         onClick={() => handleDropdownClick(item.url)}
-                        className={`block w-full text-left px-4 py-3 text-gray-200 hover:bg-gradient-to-r hover:from-purple-600/20 hover:to-blue-600/20 hover:text-white transition-all duration-200 ${
+                        className={`block w-full text-left px-4 py-3 text-sm text-gray-200 hover:bg-gradient-to-r hover:from-purple-600/20 hover:to-blue-600/20 hover:text-white transition duration-200 ${
                           idx !== link.dropdown.length - 1
                             ? "border-b border-gray-700/30"
                             : ""
@@ -124,25 +125,26 @@ export default function Header({ isSticky }) {
               <button
                 key={link.name}
                 onClick={() => handleLinkClick(link.href)}
-                className="text-gray-300 hover:text-white transition-colors duration-200"
+                className="text-gray-300 hover:text-white transition-colors duration-200 text-sm xl:text-base"
               >
                 {link.name}
               </button>
             )
           )}
+
           <button
             onClick={() => handleLinkClick("#contact")}
-            className="px-5 py-2 rounded-md btn-neon-outline"
+            className="px-4 xl:px-5 py-2 rounded-md btn-neon-outline text-sm xl:text-base whitespace-nowrap"
           >
             Contact Us
           </button>
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden">
+        <div className="lg:hidden flex items-center">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="text-white p-2 hover:bg-white/10 rounded-lg transition-colors duration-200"
+            className="text-white p-2 hover:bg-white/10 rounded-lg transition duration-200"
           >
             <svg
               className="w-6 h-6"
@@ -172,17 +174,17 @@ export default function Header({ isSticky }) {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isMobileMenuOpen ? "max-h-96" : "max-h-0"
-        } ${isSticky ? "glassmorphic-sticky" : "glassmorphic"}`}
+        className={`lg:hidden fixed top-[64px] left-0 w-full h-auto overflow-hidden transition-all duration-500 ease-in-out ${
+          isMobileMenuOpen ? "max-h-[100vh] opacity-100" : "max-h-0 opacity-0"
+        } bg-black/70 backdrop-blur-xl z-40`}
       >
-        <div className="flex flex-col items-center space-y-2 py-6 px-4">
+        <div className="flex flex-col items-stretch space-y-1 py-4 px-4 sm:px-6 overflow-y-auto">
           {navLinks.map((link) =>
             link.dropdown ? (
               <div key={link.name} className="w-full">
                 <button
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
-                  className="w-full text-gray-200 text-lg text-left px-4 py-3 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200 flex items-center justify-between"
+                  className="w-full text-gray-200 text-base sm:text-lg text-left px-4 py-3 hover:text-white hover:bg-white/5 rounded-lg transition flex items-center justify-between"
                 >
                   <span>{link.name}</span>
                   <svg
@@ -203,15 +205,15 @@ export default function Header({ isSticky }) {
                 </button>
                 <div
                   className={`overflow-hidden transition-all duration-300 ${
-                    isServicesOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                    isServicesOpen ? "max-h-96 opacity-100 mt-1" : "max-h-0 opacity-0"
                   }`}
                 >
-                  <div className="mt-2 space-y-1">
+                  <div className="space-y-1 pl-3">
                     {link.dropdown.map((item) => (
                       <button
                         key={item.name}
                         onClick={() => handleDropdownClick(item.url)}
-                        className="block w-full text-left px-8 py-2.5 text-sm text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-purple-600/20 hover:to-blue-600/20 rounded-lg transition-all duration-200"
+                        className="block w-full text-left px-6 py-2.5 text-sm sm:text-base text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-purple-600/20 hover:to-blue-600/20 rounded-lg transition"
                       >
                         {item.name}
                       </button>
@@ -223,7 +225,7 @@ export default function Header({ isSticky }) {
               <button
                 key={link.name}
                 onClick={() => handleLinkClick(link.href)}
-                className="w-full text-gray-200 hover:text-white text-lg px-4 py-3 hover:bg-white/5 rounded-lg transition-all duration-200 text-left"
+                className="w-full text-gray-200 hover:text-white text-base sm:text-lg px-4 py-3 hover:bg-white/5 rounded-lg transition text-left"
               >
                 {link.name}
               </button>
@@ -231,7 +233,7 @@ export default function Header({ isSticky }) {
           )}
           <button
             onClick={() => handleLinkClick("#contact")}
-            className="mt-4 px-6 py-2 rounded-md btn-neon-outline w-full"
+            className="mt-3 px-6 py-2.5 rounded-md btn-neon-outline w-full text-base sm:text-lg"
           >
             Contact Us
           </button>

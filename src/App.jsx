@@ -69,20 +69,6 @@ const App = () => {
     return () => revealElements.forEach(el => observer.unobserve(el));
   }, []); // Empty array: runs only once on mount
 
-  // --- Effect: Client Logo Scroller Duplication ---
-  // This is commented out because the logos are now hardcoded twice in the component
-  // for simplicity in React. If logos were dynamic, this effect would be used.
-  /*
-  useEffect(() => {
-    if (clientTrackRef.current && clientTrackRef.current.children.length === 8) {
-        clientTrackRef.current.innerHTML += clientTrackRef.current.innerHTML;
-    }
-  }, []);
-  */
-
-  // --- Effect: Feather Icons ---
-  // This effect runs after every render to ensure all icons
-  // (including those in the carousel) are correctly rendered.
   useEffect(() => {
     // Check if feather is loaded (from script in index.html)
     if (typeof feather !== 'undefined') {
@@ -118,8 +104,8 @@ const App = () => {
 
            <FadeUpOnView>
        
-          <h2 className="text-5xl md:text-6xl font-bold uppercase tracking-wider ml-[1.5em] mb-10 text-white relative z-10">
-            Our Collaboration
+          <h2 className="lg:text-5xl lg:text-left lg:ml-[2.5em] text-3xl text-center md:text-6xl font-bold uppercase tracking-wider mb-10 text-white relative z-10">
+            Our <br />Collaboration
           </h2>
         
         </FadeUpOnView>

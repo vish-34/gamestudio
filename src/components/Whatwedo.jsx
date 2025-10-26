@@ -2,41 +2,29 @@ import React from 'react'
 import { motion } from "framer-motion";
 import FadeUpOnView from '../animations/FadeUpOnView';
 
-
 const Whatwedo = () => {
-
   const logos = [
-    { 
-      name: "Xbox", 
-      src: "./Xbox.png" 
-    },
-    { 
-      name: "PS5", 
-      src: "./ps5.png" 
-    },
-    { 
-      name: "Mobile", 
-      src: "./android.png" 
-    },
-    { 
-      name: "Nintendo", 
-      src: "./nintendo.png" 
-    },
+    { name: "Xbox", src: "./Xbox.png" },
+    { name: "PS5", src: "./ps5.png" },
+    { name: "Mobile", src: "./android.png" },
+    { name: "Nintendo", src: "./nintendo.png" },
   ];
 
   return (
-    <div className=' flex items-center ml-[50em] mt-[10em] mb-[10em]'>
-      <div className='w-[40em] h-[20em] mt-10 bg-white/20 flex items-center justify-center'>
-        <h1 className='text-white items-center text-center text-3xl'>
-          <span className=''>We create games with</span><br />
-          <span className='font-bold'>AR/VR, testing and Art & Design</span>
+    <div className="flex flex-col lg:flex-row items-center lg:ml-[50em] lg:mt-[10em] lg:mb-[10em]">
+      
+      {/* Text Box */}
+      <div className="lg:w-[40em] lg:h-[20em] w-[20em] h-[10em] ml-[0.1em] mt-10 bg-white/20 flex items-center justify-center">
+        <h1 className="text-white text-center text-xl lg:text-3xl">
+          <span>We create games with</span><br />
+          <span className="font-bold">AR/VR, testing and Art & Design</span>
         </h1>
       </div>
 
-      {/* logo  */}
+      {/* Logo Row */}
       <FadeUpOnView>
-      <div className="overflow-x-auto py-4 -ml-[80.5em] mt-[5em]">
-        <div className="flex gap-4 px-4">
+      <div className="lg:overflow-x-auto py-4  lg:-ml-[80.5em] lg:mt-[5em] mt-6">
+        <div className="grid grid-cols-2 lg:flex  gap-2 px-4 justify-center lg:justify-start">
           {logos.map((logo) => (
             <div
               key={logo.name}
@@ -49,31 +37,29 @@ const Whatwedo = () => {
       </div>
       </FadeUpOnView>
 
-      {/*  animated divider line */}
+      {/* Animated Divider Lines (Desktop only) */}
       <motion.div
-        className="absolute top-0 left-1/2 w-0.5 h-[47em] mt-[20.8em] -ml-[42.3em] bg-white opacity-20 z-0"
+        className="absolute top-0 left-1/2 w-0.5 h-[47em] mt-[20.8em] -ml-[42.3em] bg-white opacity-20 z-0 hidden lg:block"
         initial={{ scaleY: 0 }}
         animate={{ scaleY: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
-        style={{ originY: 0 }} // <--- Animate from the top
+        style={{ originY: 0 }}
       />
 
       <motion.div
-        className="absolute top-0 left-1/2 w-0.5 h-[50em] mt-[81.5em] ml-[28em] bg-white opacity-20 z-0"
+        className="absolute top-0 left-1/2 w-0.5 h-[50em] mt-[81.5em] ml-[28em] bg-white opacity-20 z-0 hidden lg:block"
         initial={{ scaleY: 0 }}
         animate={{ scaleY: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
-        style={{ originY: 0 }} // <--- Animate from the top
+        style={{ originY: 0 }}
       />
 
-      {/*  animated divider line horizontal */}
-
       <motion.div
-        className="absolute top-1/2 left-0 h-0.5 w-[44.5em] ml-[5.35em] mt-[43.2em] bg-white opacity-20 z-0"
+        className="absolute top-1/2 left-0 h-0.5 w-[44.5em] ml-[5.35em] mt-[43.2em] bg-white opacity-20 z-0 hidden lg:block"
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
-        style={{ originX: 0 }} // Animate from the left
+        style={{ originX: 0 }}
       />
     </div>
   )
