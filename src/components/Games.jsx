@@ -19,7 +19,8 @@ const releasedGames = [
   {
     title: "Proving Grounds",
     tag: "New Release",
-    description: "Proving Grounds Multiplayer is a fun real classic racing game with top 3D graphics and high quality, giving you ultimate visual enjoyment. Looking for a realistic car racing experience with actual cars. tracks. and some of the most beautiful graphics ever? Check out our new Proving Grounds Multiplayer Car racing game. Drive on real 3D tracks at wild top speed, fully control the vehicle, nitrogen drift for no limit, overtake on a curve, and experience the growth of the legendary driver!",
+    description:
+      "Proving Grounds Multiplayer is a fun real classic racing game with top 3D graphics and high quality, giving you ultimate visual enjoyment. Looking for a realistic car racing experience with actual cars, tracks, and some of the most beautiful graphics ever? Check out our new Proving Grounds Multiplayer Car racing game. Drive on real 3D tracks at wild top speed, fully control the vehicle, nitrogen drift for no limit, overtake on a curve, and experience the growth of the legendary driver!",
     platforms: ["PC", "VR"],
     actionText: "Learn More",
     bgImage:
@@ -75,28 +76,36 @@ export default function Games() {
   const renderGame = (game) => (
     <div
       key={game.title}
-      className={`relative  lg:min-h-screen flex items-center justify-${game.align} parallax-bg`}
+      className={`relative min-h-[80vh] lg:min-h-screen flex items-center justify-${game.align} parallax-bg`}
       style={{
         backgroundImage: `${game.gradient}, url('${game.bgImage}')`,
       }}
     >
-      <div className="container mx-auto max-w-7xl px-6">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6">
         <div
-          className={`w-full md:w-1/2 lg:w-2/5 ${
+          className={`w-full sm:w-4/5 md:w-1/2 lg:w-2/5 ${
             game.align === "end" ? "ml-auto" : ""
           } ${game.align === "center" ? "mx-auto" : ""}`}
         >
-          <div className={`glassmorphic p-8 md:p-12 reveal text-${game.textAlign}`}>
-            <span className="font-heading text-sm uppercase tracking-widest text-neon-primary">
-              {game.tag}
-            </span>
-            <h3 className="font-heading text-4xl md:text-6xl text-white mt-4">{game.title}</h3>
-            <p className="mt-6 text-gray-200">{game.description}</p>
-            <div className="mt-8 space-x-4">
+          <div
+            className={`glassmorphic p-6 sm:p-8 md:p-12 reveal text-${game.textAlign}`}
+          >
+            {game.tag && (
+              <span className="font-heading text-xs sm:text-sm uppercase tracking-widest text-neon-primary">
+                {game.tag}
+              </span>
+            )}
+            <h3 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mt-4">
+              {game.title}
+            </h3>
+            <p className="mt-4 text-sm sm:text-base md:text-lg text-gray-200">
+              {game.description}
+            </p>
+            <div className="mt-6 sm:mt-8 space-x-2 sm:space-x-4">
               {game.platforms.map((platform, i) => (
                 <span
                   key={i}
-                  className="border border-gray-400 text-gray-300 rounded-full px-4 py-1 text-sm"
+                  className="border border-gray-400 text-gray-300 rounded-full px-3 sm:px-4 py-1 text-xs sm:text-sm"
                 >
                   {platform}
                 </span>
@@ -104,8 +113,12 @@ export default function Games() {
             </div>
             <a
               href="#"
-              className="mt-10 inline-block px-8 py-3 rounded-md btn-neon-outline text-lg"
-              style={game.title === "Cyber Runner 2088" ? { "--neon-primary": "var(--neon-secondary)" } : {}}
+              className="mt-6 sm:mt-8 inline-block px-6 sm:px-8 py-2 sm:py-3 rounded-md btn-neon-outline text-sm sm:text-lg"
+              style={
+                game.title === "Cyber Runner 2088"
+                  ? { "--neon-primary": "var(--neon-secondary)" }
+                  : {}
+              }
             >
               {game.actionText}
             </a>
@@ -116,13 +129,13 @@ export default function Games() {
   );
 
   return (
-    <section id="games" className="py-24">
+    <section id="games" className="py-16 sm:py-24">
       <FadeUpOnView>
-        <div className="container mx-auto px-6 mb-16">
-          <h2 className="font-heading text-center lg:text-left text-5xl md:text-6xl text-white lg:ml-[1.1em] font-bold">
+        <div className="container mx-auto px-4 sm:px-6 mb-12 sm:mb-16">
+          <h2 className="font-heading text-center lg:text-left text-4xl sm:text-5xl md:text-6xl text-white lg:ml-[1.1em] font-bold">
             Our Worlds
           </h2>
-          <p className="text-lg text-center lg:text-left text-gray-300 max-w-2xl mx-auto mt-4 lg:ml-[4em]">
+          <p className="text-base sm:text-lg text-center lg:text-left text-gray-300 max-w-2xl mx-auto mt-4 lg:ml-[4em]">
             Each project is a universe we've built from scratch, pushing the boundaries of imagination and technology.
           </p>
         </div>
