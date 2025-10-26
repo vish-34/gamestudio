@@ -112,9 +112,9 @@ export default function Portfolio() {
       </div>
 
       {/* Floating Icon */}
-      <div className="fixed bottom-6 left-6 w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center shadow-lg z-50">
+      {/* <div className="fixed bottom-6 left-6 w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center shadow-lg z-50">
         <SparklesIcon className="w-7 h-7 text-white" />
-      </div>
+      </div> */}
 
        {/*  animated divider line */}
       <motion.div
