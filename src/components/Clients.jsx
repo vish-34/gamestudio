@@ -1,14 +1,11 @@
-
 export default function Clients  ({ clientTrackRef })  {
   const clientLogos = [
-    { src: "https://placehold.co/150x50/ffffff/000000?text=PARTNER+1&font=inter", alt: "Client 1" },
-    { src: "https://placehold.co/150x50/ffffff/000000?text=NVIDIA&font=inter", alt: "Client 2" },
-    { src: "https://placehold.co/150x50/ffffff/000000?text=UNREAL&font=inter", alt: "Client 3" },
-    { src: "https://placehold.co/150x50/ffffff/000000?text=SONY&font=inter", alt: "Client 4" },
-    { src: "https://placehold.co/150x50/ffffff/000000?text=XBOX&font=inter", alt: "Client 5" },
-    { src: "https://placehold.co/150x50/ffffff/000000?text=UNITY&font=inter", alt: "Client 6" },
-    { src: "https://placehold.co/150x50/ffffff/000000?text=METAVERSE&font=inter", alt: "Client 7" },
-    { src: "https://placehold.co/150x50/ffffff/000000?text=PARTNER+8&font=inter", alt: "Client 8" },
+    { src: "https://img.icons8.com/?size=100&id=SDDUyPtXiQRf&format=png&color=FFFFFF", alt: "Client 2" },
+    { src: "https://img.icons8.com/?size=100&id=38240&format=png&color=FFFFFF", alt: "Client 3" },
+    { src: "https://img.icons8.com/?size=100&id=M3rdcQjtEtJP&format=png&color=FFFFFF", alt: "Client 4" },
+    { src: "https://img.icons8.com/?size=100&id=12504&format=png&color=FFFFFF", alt: "Client 5" },
+    { src: "https://img.icons8.com/?size=100&id=39848&format=png&color=FFFFFF", alt: "Client 6" },
+    { src: "https://img.icons8.com/?size=100&id=mgtksf7Mnzqy&format=png&color=FFFFFF", alt: "Client 7" },
   ];
 
   // The track is duplicated in the App's useEffect to create the seamless loop

@@ -12,6 +12,8 @@ import Whatwedo from './components/Whatwedo';
 import StudioStats from './components/StudioStats';
 import Clients2 from './components/Clients2';
 import Collabs from './components/Collabs';
+import FadeUpOnView from './animations/FadeUpOnView';
+// import { motion } from 'framer-motion';
 
 const App = () => {
   // --- State ---
@@ -113,6 +115,17 @@ const App = () => {
 
           {/* Portfolio Section */}
           <Portfolio />
+
+           <FadeUpOnView>
+       
+          <h2 className="text-5xl md:text-6xl font-bold uppercase tracking-wider ml-[1.5em] mb-10 text-white relative z-10">
+            Our Collaboration
+          </h2>
+        
+        </FadeUpOnView>
+          <Collabs/>
+
+          
           {/* Clients Section */}
           <Clients clientTrackRef={clientTrackRef} />
 
@@ -129,6 +142,8 @@ const App = () => {
 
         {/* 5. Footer Component */}
         <Footer />
+
+       
       </div>
     </>
   );

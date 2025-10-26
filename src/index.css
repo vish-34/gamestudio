@@ -1,3 +1,129 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html, body, #root {
+  /* Ensure no 'overflow: hidden' is set on the main containers */
+  overflow: visible; 
+}
+
+:root {
+  --neon-primary: #3b82f6; /* bright blue */
+  --bg-dark: #000000;      /* dark background for contrast */
+}
+
+/* Text glow effect */
+.text-glow {
+  text-shadow:
+    0 0 6px var(--neon-primary),
+    0 0 10px var(--neon-primary),
+    0 0 20px rgba(0, 242, 234, 0.5);
+}
+
+/* Filled neon button */
+.btn-neon-primary {
+  position: relative;
+  background: var(--neon-primary);
+  color: var(--bg-dark);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow:
+    0 0 8px var(--neon-primary),
+    0 0 16px rgba(0, 242, 234, 0.7);
+}
+
+.btn-neon-primary:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 12px var(--neon-primary),
+    0 0 24px var(--neon-primary),
+    0 0 48px rgba(0, 242, 234, 0.7);
+}
+
+/* Outline neon button */
+.btn-neon-outline {
+  position: relative;
+  border: 2px solid var(--neon-primary);
+  color: var(--neon-primary);
+  transition: all 0.3s ease;
+  text-shadow: 0 0 4px var(--neon-primary);
+  background: transparent;
+}
+
+.btn-neon-outline:hover {
+  background: var(--neon-primary);
+  color: var(--bg-dark);
+  box-shadow:
+    0 0 10px var(--neon-primary),
+    0 0 20px rgba(0, 242, 234, 0.5);
+  text-shadow: none;
+}
+
+
+
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem; 
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%; 
+  } 
+}
+
+
+
+@layer base {
+  * {
+  }
+  body {
+    @apply bg-background text-foreground; 
+  } 
+}

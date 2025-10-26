@@ -5,9 +5,15 @@ export default function Testimonials() {
   const trackRef = useRef(null);
 
   const slides = [
-    { img: "https://placehold.co/100x100/ffffff/000000?text=P", quote: "GameEon's attention to detail is just insane. Playing Mumbai Gullies felt like I was actually back home. A masterpiece.", name: "@MumbaiGamer91", title: "Player" },
-    { img: "https://placehold.co/100x100/ffffff/000000?text=A", quote: "Working with the GameEon team was a dream. They delivered a cinematic trailer that exceeded all our expectations.", name: "Anna Chen", title: "Marketing Director, XYZ Publishing" },
-    { img: "https://placehold.co/100x100/ffffff/000000?text=R", quote: "The level of technical artistry in their asset pack saved us months of development. Top-tier quality.", name: "Ravi Patel", title: "Lead Developer, Indie Studio" },
+    { img: "https://placehold.co/100x100/ffffff/000000?text=A", quote: "It was great working with GameEon Studios on games for our gaming application. We truly appreciate the team's efforts and their commitment to the project.", name:"Amit Grover", title: "Vice President Marketing (GameSkraft)" },
+{
+  img: "https://placehold.co/100x100/ffffff/000000?text=M",
+  quote: "JioGames is thrilled to host GameEon Studios’ games. Their casual games, like Cricket Play 2021 and Crashy Car Racing, are engaging and fun, and gamers can’t get enough of them. We look forward to continuing this partnership.",
+  name: "Mansi Dutta",
+  title: "Partner and Strategic Alliances Manager, Jio Games"
+},
+    { img: "https://placehold.co/100x100/ffffff/000000?text=S", quote: "We recently worked with GameEon Studios on a project to develop a new mobile game. I was very impressed with their work. They were professional, efficient, and creative. They listened to our needs and delivered a product that exceeded our expectations. I would highly recommend GameEon Studios to anyone looking for a top-notch game development company.", name: "Sanjay Soni", title: "Founder, Talking Pixels" },
+    { img: "https://placehold.co/100x100/ffffff/000000?text=Y", quote: "I would highly recommend GameEon as a gaming partner, They prepared our game before the date with additional features. The entire team, including Founder Nikhil Malankar, Developers, and Team members, are very professional and believe in working extra for the client. They use latest technology and version which gives an advantage of more features choice. The entire UI of my game “Capital Rush” is very finely designed based on UX principles. The code was written in a very structured and simplest way possible.", name: "Yogesh Lakhpatani", title: "Sr. Operations Manager, Capital Rush" },
   ];
 
   const slideCount = slides.length;
