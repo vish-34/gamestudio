@@ -64,13 +64,13 @@ const Hero = () => {
         </div>
 
         {/* Divider Line Desktop only */}
-        <motion.div
+        {/* <motion.div
           className="hidden md:block absolute top-0 left-1/2 w-[1px] h-full bg-white opacity-20 z-0 -ml-[42em]"
           initial={{ scaleY: 0 }}
           animate={{ scaleY: 1 }}
           transition={{ duration: 2, ease: "easeOut" }}
           style={{ originY: 0 }}
-        />
+        /> */}
       </div>
     </section>
   );
